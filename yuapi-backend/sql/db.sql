@@ -37,3 +37,17 @@ insert into yuapi.`interface_info` (`name`, `description`, `url`, `requestHeader
 insert into yuapi.`interface_info` (`name`, `description`, `url`, `requestHeader`, `responseHeader`, `status`, `method`, `userId`) values ('贺弘文', '林君浩', 'www.kerstin-kautzer.co', '姜擎苍', '萧弘文', 0, '龚靖琪', 6);
 insert into yuapi.`interface_info` (`name`, `description`, `url`, `requestHeader`, `responseHeader`, `status`, `method`, `userId`) values ('胡绍辉', '于思', 'www.chasity-kunde.co', '薛果', '曹笑愚', 0, '叶天宇', 41);
 insert into yuapi.`interface_info` (`name`, `description`, `url`, `requestHeader`, `responseHeader`, `status`, `method`, `userId`) values ('林炎彬', '田立诚', 'www.francisco-dare.net', '高黎昕', '龙浩宇', 0, '龙越彬', 47);
+
+-- 用户调用接口关系表
+create table if not exists yuapi.`user_interface_info`
+(
+    `id` bigint not null auto_increment comment '主键' primary key,
+    `userId` varchar(256) not null comment '调用用户 id',
+    `InterfaceInfoId` varchar(256) null comment '接口 id',
+    `totalNum` varchar(512) not null comment '总调用次数',
+    `leftNum` text not null comment '剩余调用次数',
+    `status` bigint not null comment '0-正常，1-禁用',
+    `createTime` datetime default CURRENT_TIMESTAMP not null comment '创建时间',
+    `updateTime` datetime default CURRENT_TIMESTAMP not null on update CURRENT_TIMESTAMP comment '更新时间',
+    `isDelete` tinyint default 0 not null comment '是否删除(0-未删, 1-已删)'
+) comment '用户调用接口关系';
