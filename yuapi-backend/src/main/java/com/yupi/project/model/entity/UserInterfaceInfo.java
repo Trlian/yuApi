@@ -1,10 +1,10 @@
-package generator.domain;
+package com.yupi.project.model.entity;
 
 import com.baomidou.mybatisplus.annotation.*;
+import lombok.Data;
 
 import java.io.Serializable;
 import java.util.Date;
-import lombok.Data;
 
 /**
  * 用户调用接口关系
@@ -22,27 +22,27 @@ public class UserInterfaceInfo implements Serializable {
     /**
      * 调用用户 id
      */
-    private String userId;
+    private Long userId;
 
     /**
      * 接口 id
      */
-    private String interfaceInfoId;
+    private Long interfaceInfoId;
 
     /**
      * 总调用次数
      */
-    private String totalNum;
+    private Integer totalNum;
 
     /**
      * 剩余调用次数
      */
-    private String leftNum;
+    private Integer leftNum;
 
     /**
      * 0-正常，1-禁用
      */
-    private Long status;
+    private Integer status;
 
     /**
      * 创建时间

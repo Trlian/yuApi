@@ -12,17 +12,19 @@ import javax.servlet.http.HttpServletRequest;
  * @author yupi
  */
 @RestController
-@RequestMapping("/name")
+@RequestMapping("/")
 public class NameController {
 
-    @GetMapping("/")
+    @GetMapping("/name")
     public String getNameByGet(String name, HttpServletRequest request) {
 
-        return name;
+        System.out.println(request.getHeader("yupi"));
+        return "GET 你的名字是" +  name;
     }
 
     @PostMapping("/")
     public String getNameByPost(@RequestParam String name) {
+        // 调用成功后，调用次数 + 1
         return "POST 你的名字是" + name;
     }
 
@@ -54,7 +56,10 @@ public class NameController {
         }
 
 
-        return "POST 你的名字是" + user.getUsername();
+        String result = "POST 你的名字是" + user.getUsername();
+
+        // 调用成功后，调用次数 + 1
+        return result;
     }
 
 }
